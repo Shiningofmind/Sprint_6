@@ -1,5 +1,6 @@
 import allure
 import pytest
+from conftest import driver
 from data import QUESTIONS_AND_ANSWERS, UrlsList
 from pages.home_page import HomePage
 

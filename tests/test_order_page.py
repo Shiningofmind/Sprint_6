@@ -1,5 +1,6 @@
 import allure
 import pytest
+from conftest import driver
 from pages.home_page import HomePage
 from pages.order_page import OrderPage
 from data import UrlsList, OrderData1, OrderData2

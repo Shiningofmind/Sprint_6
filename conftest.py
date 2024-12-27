@@ -5,6 +5,6 @@ from selenium import webdriver
 def driver():
     options = webdriver.FirefoxOptions()
     options.add_argument('--window-size=1920,1080')
-    browser = webdriver.Firefox(options=options)
-    yield browser
-    browser.quit()
+    driver = webdriver.Firefox(options=options)
+    yield driver
+    driver .quit()

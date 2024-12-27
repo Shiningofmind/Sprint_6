@@ -23,6 +23,7 @@ class OrderData2:
 class UrlsList:
     home = 'https://qa-scooter.praktikum-services.ru/'
     order = 'https://qa-scooter.praktikum-services.ru/order'
+    dzen = 'https://dzen.ru/?yredirect=true'
 
 QUESTIONS_AND_ANSWERS = [
     (0, 'Сутки — 400 рублей. Оплата курьеру — наличными или картой.'),

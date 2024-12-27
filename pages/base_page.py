@@ -1,7 +1,6 @@
 import allure
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
-from tests.conftest import driver
 
 
 class BasePage:
@@ -36,7 +35,7 @@ class BasePage:
     def format_locators(self, locator_1, num):
         method, locator = locator_1
         formatted_locator = locator.format(num)
-        return (method, formatted_locator)
+        return method, formatted_locator
 
     @allure.step('Скролл до необходимого элемента')
     def scroll_to_element(self, locator):

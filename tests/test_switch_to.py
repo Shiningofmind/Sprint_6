@@ -1,4 +1,5 @@
 import allure
+from conftest import driver
 from data import UrlsList
 from pages.home_page import HomePage
 

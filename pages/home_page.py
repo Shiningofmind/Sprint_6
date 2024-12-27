@@ -1,4 +1,6 @@
 import allure
+from data import UrlsList
+from selenium.webdriver.support.ui import WebDriverWait
 from locators.home_page_locators import LocatorsHomePage
 from locators.switch_to_locators import LocatorsSwitchTo
 from pages.base_page import BasePage
@@ -8,9 +10,11 @@ class HomePage(BasePage):
 
     @allure.step('Получение ответа на вопрос')
     def get_answer_text(self, num):
+        # Форматируем локаторы
         locator_q_formatted = self.format_locators(LocatorsHomePage.QUESTION_LOCATOR, num)
-        locator_a_formatted = self.format_locators(LocatorsHomePage.ANSWER_LOCATOR,num)
+        locator_a_formatted = self.format_locators(LocatorsHomePage.ANSWER_LOCATOR, num)
         self.scroll_to_element(LocatorsHomePage.QUESTION_LOCATOR_TO_SCROLL)
+        WebDriverWait(self.driver, 10).until(lambda driver: self.driver.find_element(*locator_q_formatted).is_displayed() )
         self.click_element(locator_q_formatted)
         return self.get_text_from_element(locator_a_formatted)
 
@@ -25,12 +29,12 @@ class HomePage(BasePage):
     @allure.step("Проверка отображения логотипа Дзен")
     def is_dzen_logo_displayed(self):
         return self.element_displayed(LocatorsSwitchTo.DZEN) and \
-            self.get_current_url() == "https://dzen.ru/?yredirect=true"
+            self.get_current_url() == UrlsList.dzen
 
     @allure.step("Проверка отображения заголовка Самокат")
     def is_scooter_header_displayed(self):
         return self.element_displayed(LocatorsHomePage.HEADER) and \
-            self.get_current_url() == "https://qa-scooter.praktikum-services.ru/"
+            self.get_current_url() == UrlsList.home
 
     @allure.step("Переключение на окно по индексу")
     def switch_to_window(self, index):
