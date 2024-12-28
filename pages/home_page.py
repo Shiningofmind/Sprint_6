@@ -14,7 +14,7 @@ class HomePage(BasePage):
         locator_q_formatted = self.format_locators(LocatorsHomePage.QUESTION_LOCATOR, num)
         locator_a_formatted = self.format_locators(LocatorsHomePage.ANSWER_LOCATOR, num)
         self.scroll_to_element(LocatorsHomePage.QUESTION_LOCATOR_TO_SCROLL)
-        WebDriverWait(self.driver, 10).until(lambda driver: self.driver.find_element(*locator_q_formatted).is_displayed() )
+        self.wait_for_element(locator_q_formatted)
         self.click_element(locator_q_formatted)
         return self.get_text_from_element(locator_a_formatted)
 
