@@ -46,3 +46,8 @@ class BasePage:
     @allure.step('Формирование динамического локатора')
     def get_dynamic_locator(self, locator_template, *args):
         return locator_template[0], locator_template[1].format(*args)
+
+    @allure.step('Ожидаем, пока элемент станет видимым.')
+    def wait_for_element(self, locator, timeout=10):
+        WebDriverWait(self.driver, timeout).until(lambda driver: driver.find_element(*locator).is_displayed())
+        return self.driver.find_element(*locator)
